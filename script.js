@@ -231,9 +231,11 @@ window.onload = function() {
         ctx.font = "2.5rem serif";
         ctx.textAlign = "center";
 
-        ctx.stroke();
+        ctx.closePath();
+        // ctx.stroke();
         ctx.fill();
 
+        ctx.stroke();
         // Remove shadow on text
         ctx.shadowColor = "#222";
         ctx.shadowBlur = 5;
@@ -246,9 +248,8 @@ window.onload = function() {
 
         ctx.strokeText(tooltipText2, startX + width/2, startY + height/3);
         ctx.fillText(tooltipText2, startX + width/2, startY + height/3)
-        ctx.closePath();
+        // ctx.closePath();
 
-        ctx.stroke();
     };
 
     let testColor = "rgba(50, 125, 30, 0.5)";
@@ -271,5 +272,5 @@ window.onload = function() {
 
     // drawToolTip2(ctx, 150, 500, 120, 350, 5);
 
-    createToolTip(ctx, 250, 200, 100, 500, 10, "Quarter 1", "September 1st, 2020");
+    createToolTip(ctx, 250, 200, 85, 500, 10, "Q1", "September 1st, 2020");
 }
