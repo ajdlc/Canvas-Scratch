@@ -187,7 +187,7 @@ window.onload = function() {
 
     };
 
-    let createToolTip = (ctx, startX, startY, height, width, lineW, tooltipText="", color="#333", cap="round", fillColor="rgba(201, 201, 201, 0.5)") => {
+    let createToolTip = (ctx, startX, startY, height, width, lineW, tooltipText="", tooltipText2="", color="#333", cap="round", fillColor="rgba(201, 201, 201, 0.5)") => {
         ctx.beginPath();
 
         // Create the arrow
@@ -231,10 +231,21 @@ window.onload = function() {
         ctx.font = "2.5rem serif";
         ctx.textAlign = "center";
 
+        ctx.stroke();
         ctx.fill();
-        ctx.strokeText(tooltipText, startX + width/2, startY + height/2);
+
+        // Remove shadow on text
+        ctx.shadowColor = "#222";
+        ctx.shadowBlur = 5;
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = 5;
+
+        ctx.strokeText(tooltipText, startX + width/2, startY - height/4);
         ctx.fillStyle = "white";
-        ctx.fillText(tooltipText, startX + width/2, startY + height/2)
+        ctx.fillText(tooltipText, startX + width/2, startY - height/4)
+
+        ctx.strokeText(tooltipText2, startX + width/2, startY + height/3);
+        ctx.fillText(tooltipText2, startX + width/2, startY + height/3)
         ctx.closePath();
 
         ctx.stroke();
@@ -260,5 +271,5 @@ window.onload = function() {
 
     // drawToolTip2(ctx, 150, 500, 120, 350, 5);
 
-    createToolTip(ctx, 350, 200, 150, 500, 10, "Test");
+    createToolTip(ctx, 250, 200, 100, 500, 10, "Quarter 1", "September 1st, 2020");
 }
